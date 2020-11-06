@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# check for docker-compose using: docker-compose version
-# check for docker using: docker info
+
+# set up terminfo
+wget https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info
+tic -x alacritty.info
+rm alacritty.info
 
 
 # general update and git
