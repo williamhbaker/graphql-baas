@@ -1,0 +1,12 @@
+type Task {
+  id: ID!
+  title: String!
+  completed: Boolean!
+  user: User!
+}
+
+type User {
+  username: String! @id
+  name: String
+  tasks: [Task] @hasInverse(field: user)
+}

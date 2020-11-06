@@ -1,0 +1,31 @@
+version: '3.2'
+services:
+  web:
+    image: nginx
+    restart: always
+    container_name: 'dgraph-proxy'
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d/:ro
+    ports:
+      - '80:80'
+
+  dgraph:
+    image: dgraph/standalone:v20.03.0
+    container_name: 'dgraph'
+    volumes:
+      - ./tmp/graph:/dgraph
+    ports:
+      - '9080:9080'
+      - '8000:8000'
+      - '8080:8080'
+    restart: on-failure
+
+  playground:
+    build: ./playground
+    restart: always
+    container_name: 'dgraph-playground'
+
+  gui:
+    build: ./server
+    restart: always
+    container_name: 'dgraph-gui'
