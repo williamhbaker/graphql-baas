@@ -29,3 +29,11 @@ services:
     build: ./server
     restart: always
     container_name: 'dgraph-gui'
+
+  todos:
+    build: ./todos
+    depends_on:
+      - web
+      - dgraph
+    restart: always
+    container_name: 'todos'
