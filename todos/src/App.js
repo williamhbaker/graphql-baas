@@ -25,12 +25,15 @@ const createApolloClient = () => {
 const App = () => {
   const client = createApolloClient();
   return (
-    <ApolloProvider client={client}>
-      <div>
-        <h1>todos</h1>
-        <TodoApp />
-      </div>
-    </ApolloProvider>
+    <>
+      <img src="files/assets/picture.jpg" alt="your picture here" />
+      <ApolloProvider client={client}>
+        <div>
+          <h1>todos</h1>
+          <TodoApp />
+        </div>
+      </ApolloProvider>
+    </>
   );
 };
 

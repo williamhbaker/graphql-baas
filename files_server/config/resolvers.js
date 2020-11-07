@@ -49,14 +49,15 @@ const resolvers = {
         const fileStream = createReadStream();
         const loc = path.join(uploadDir, filename);
 
-        console.log(fileStream);
-        console.log(loc);
-        console.log(filename);
-
         fileStream.pipe(fs.createWriteStream(loc));
 
         return file;
       });
+    },
+    deleteLocal: async (parent, args) => {
+      fs.unlinkSync(path.join(uploadDir, args.file));
+      const fileList = await fsPromises.readdir(uploadDir);
+      return fileList.filter((f) => f !== '.gitignore');
     },
     singleUploadStream: async (parent, args) => {
       const file = await args.file;
@@ -71,6 +72,23 @@ const resolvers = {
       const result = await s3.upload(uploadParams).promise();
 
       return file;
+    },
+    deleteS3: async (parent, args) => {
+      const params = {
+        Bucket: s3bucket,
+        Key: args.file,
+      };
+
+      await s3.deleteObject(params).promise();
+
+      const fileList = await s3.listObjects({ Bucket: s3bucket }).promise();
+
+      return fileList.Contents.map((item) => ({
+        fileName: item.Key,
+        size: item.Size,
+        modified: item.LastModified,
+        link: makeSignedUrl(item.Key),
+      }));
     },
   },
 };

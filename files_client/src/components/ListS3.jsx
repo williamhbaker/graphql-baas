@@ -1,6 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo';
 import gql from "graphql-tag";
+import DeleteS3Button from './DeleteS3Button'
 
 const GET_S3_FILES = gql`
   query {
@@ -26,6 +27,7 @@ const ListS3 = () => (
               <a href={fobj.link}>
                 {fobj.fileName} - {fobj.modified} - {Math.round(fobj.size / 1000, 2)}kb
               </a>
+              <DeleteS3Button file={fobj.fileName} />
             </li>
           ))}
         </ul>

@@ -25,6 +25,8 @@ const typeDefs = gql`
   type Mutation {
     singleUpload(file: Upload!): File!
     singleUploadStream(file: Upload!): File!
+    deleteLocal(file: String!): [String]
+    deleteS3(file: String!): [S3File]
   }
 `;
 

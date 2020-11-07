@@ -1,6 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo';
 import gql from "graphql-tag";
+import DeleteLocalButton from './DeleteLocalButton'
 
 const GET_LOCAL_FILES = gql`
   query {
@@ -19,6 +20,7 @@ const ListLocal = () => (
           {data.localFiles.map(fname => (
             <li key={fname}>
               <a href={`assets/${fname}`}>{fname}</a>
+              <DeleteLocalButton file={fname} />
             </li>
           ))}
         </ul>
