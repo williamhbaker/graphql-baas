@@ -37,3 +37,15 @@ services:
       - dgraph
     restart: always
     container_name: 'todos'
+
+  files_server:
+    build: ./files_server
+    restart: always
+    container_name: 'files_server'
+    volumes:
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+
+  files_client:
+    build: ./files_client
+    restart: always
+    container_name: 'files_client'

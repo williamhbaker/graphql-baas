@@ -2,6 +2,7 @@
   "name": "todo-app-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://mywebsite.com/todos",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
     "@testing-library/jest-dom": "^4.2.4",

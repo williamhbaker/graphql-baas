@@ -2,8 +2,36 @@ html
   head
     title= title
   body
+    h1 Administration
     a(href='/ratel/?latest#/') Dgraph Admin
     br
-    a(href='/playground') GraphQL Playground
+    a(href='/playground') Main API GraphQL IDE
     br
+
+    h1 Services
+    a(href='/files') File Management
+    br
+    br
+    h3 Update Dgraph GraphQL schema
+    form(action='/schema', method='POST')
+      textarea(name='newSchema', value='', rows='25', cols='75')
+      br
+      input(type='submit', value='Submit')
+
+    h1 Misc
     a(href='/todos') Sample App
+
+
+    br
+    br
+    p Post this schema to make the sample app work!
+    br
+    pre.
+      type Task {
+        id: ID!
+        title: String! @search(by: [fulltext])
+        completed: Boolean! @search
+      }
+
+    br
+    br
