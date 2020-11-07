@@ -12,7 +12,7 @@ import { createUploadLink } from 'apollo-upload-client';
 const apolloCache = new InMemoryCache();
 
 const uploadLink = createUploadLink({
-  uri: 'graphql',
+  uri: 'files/graphql',
   headers: {
     'keep-alive': 'true',
   },
