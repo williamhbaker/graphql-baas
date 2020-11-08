@@ -42,8 +42,8 @@ services:
     build: ./files_server
     restart: always
     container_name: 'files_server'
-    volumes:
-      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+    # volumes:
+    #   - $HOME/.aws/credentials:/root/.aws/credentials:ro
 
   files_client:
     build: ./files_client
