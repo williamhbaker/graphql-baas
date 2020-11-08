@@ -19,7 +19,7 @@ const ListLocal = () => (
         <ul>
           {data.localFiles.map(fname => (
             <li key={fname}>
-              <a href={`assets/${fname}`}>{fname}</a>
+              <a href={`/assets/${fname}`}>{fname}</a>
               <DeleteLocalButton file={fname} />
             </li>
           ))}
